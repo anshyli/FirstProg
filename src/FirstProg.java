@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 
 /**
  * 
- * @author GBTC440008UR
+ * @author Nelson
  *
  */
 public class FirstProg {
