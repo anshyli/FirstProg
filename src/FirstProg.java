@@ -2,10 +2,6 @@ import java.util.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-//my first program
-/*
- * It does not do much
- */
 /**
  * 
  * @author GBTC440008UR
