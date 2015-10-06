@@ -35,10 +35,10 @@ public class InvoiceApp {
 		int itemCount = 0;
 		Scanner kb = new Scanner(System.in);	
 		// creating an invoice
-		InvoiceApp theInvoice = new InvoiceApp();
+		//InvoiceApp theInvoice = new InvoiceApp();
 		DateFormat df = new SimpleDateFormat("EEE, MMM d, ' 'yy");
 		Date invoiceDate = new Date();
-		System.out.println("Invoice " + theInvoice.invoiceId + "  on " + df.format(invoiceDate));
+		System.out.println("Invoice " + InvoiceApp.invoiceId + "  on " + df.format(invoiceDate));
 		System.out.println();
 		System.out.println("Product \t Quantity \t Line Total \t Line Tax");
         NumberFormat currency = NumberFormat.getCurrencyInstance();  
@@ -47,7 +47,7 @@ public class InvoiceApp {
 		String pBarCode = kb.next(); 
         while (!pBarCode.equals("done")){
         	Product theProduct = ProductDB.getProductInstance(pBarCode);
-            LineItem thisLineItem = new LineItem(theProduct, theInvoice.invoiceId);
+            LineItem thisLineItem = new LineItem(theProduct, InvoiceApp.invoiceId);
             //LineItem created
     		System.out.println("Enter product unit price");
     		double pUnitPrice = kb.nextDouble();      
@@ -78,10 +78,11 @@ public class InvoiceApp {
 		    pBarCode = kb.next(); 
         }	
         // All LineItem collected, complete the invoice now
-       	System.out.println(" Taxable subtotal: " + taxableTotal);
-       	System.out.println(" Untaxable subtotal: " + untaxableTotal);
-       	System.out.println(" Tax: " + totalTax);
-       	System.out.println(" Grand Total: " + grandTotal);
+       	System.out.println(" Taxable subtotal: " + currency.format(taxableTotal));
+       	System.out.println(" Untaxable subtotal: " + currency.format(untaxableTotal));
+       	System.out.println(" Tax: " + currency.format(totalTax));
+       	System.out.println(" Grand Total: " + currency.format(grandTotal));
+       	kb.close();
 	}
 
 }
