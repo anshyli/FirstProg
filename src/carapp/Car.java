@@ -1,9 +1,12 @@
 package carapp;
 
+import java.text.NumberFormat;
+
 public class Car extends Vehicle {
 	String model;
 	String color;
 	double speed;
+	double unitPrice = 10000.00;
 	String status;
 	
 	public Car() {
@@ -12,10 +15,14 @@ public class Car extends Vehicle {
 	public Car(String model, String color, String type) {
 		super(type);
 		this.model = model;
-		this.color = color;
-		
+		this.color = color;		
 	}
-	
+	public double getUnitPrice() {
+		return unitPrice;
+	}
+	public void setUnitPrice(double unitPrice) {
+		this.unitPrice = unitPrice;
+	}	
 	public String getStatus() {
 		return status;
 	}
@@ -52,8 +59,16 @@ public class Car extends Vehicle {
 		this.setStatus("slowing down.");
 		System.out.println("The car is " + this.getStatus());
 		this.setStatus("stopped.");
-		System.out.println("The car has " + this.getStatus());
-		
+		System.out.println("The car has " + this.getStatus());		
+	}
+
+	@Override
+	public String toString() {
+		NumberFormat currency = NumberFormat.getCurrencyInstance();
+		return  " Type: 		" + type + "\n" +
+					"Model:			" + model + "\n" +
+					"Color:		" + color + "\n" +
+					"Unit Price: 		" + currency.format(unitPrice) + "\n";
 	}
 
 }

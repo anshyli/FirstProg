@@ -8,9 +8,10 @@ public class CarApp {
 		String vType = "truck";
 		
 		Car myCar = new Car(model, color, vType);
-		myCar.programmedTest();
-		
+//		myCar.programmedTest();
+		myCar.toString();		
 		System.out.println("This vehicle is a " + myCar.type);
+
 	}
 
 }
