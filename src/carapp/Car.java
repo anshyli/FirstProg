@@ -70,5 +70,11 @@ public class Car extends Vehicle {
 					"Color:		" + color + "\n" +
 					"Unit Price: 	" + currency.format(unitPrice) + "\n";
 	}
+	
+	public Boolean equals(Car bCar) {
+		Boolean same = false;
+		if (bCar.type.equals(type) && bCar.color.equals(color) && bCar.model.equals(model)) same = true;
+		return same;
+	}
 
 }
