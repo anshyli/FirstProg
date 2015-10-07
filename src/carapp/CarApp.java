@@ -9,9 +9,9 @@ public class CarApp {
 		
 		Car myCar = new Car(model, color, vType);
 //		myCar.programmedTest();
-		myCar.toString();		
+				
 		System.out.println("This vehicle is a " + myCar.type);
-
+		System.out.println("\n"+myCar.toString());
 	}
 
 }

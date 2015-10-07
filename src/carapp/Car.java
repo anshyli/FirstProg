@@ -66,9 +66,9 @@ public class Car extends Vehicle {
 	public String toString() {
 		NumberFormat currency = NumberFormat.getCurrencyInstance();
 		return  " Type: 		" + type + "\n" +
-					"Model:			" + model + "\n" +
+					"Model:		" + model + "\n" +
 					"Color:		" + color + "\n" +
-					"Unit Price: 		" + currency.format(unitPrice) + "\n";
+					"Unit Price: 	" + currency.format(unitPrice) + "\n";
 	}
 
 }
