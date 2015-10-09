@@ -1,5 +1,4 @@
 package magicballapp;
-import java.util.Random;
 import java.util.Scanner;
 
 public class MagicBallApp {
@@ -31,6 +30,7 @@ public class MagicBallApp {
 			if (seeHistory.equals("Y")) theBall.displayHistory();
 			System.out.println("Bye!");
 		}
+		sc.close();
 	}
 
 }
