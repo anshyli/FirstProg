@@ -1,4 +1,7 @@
 package magicballapp;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.lang.NullPointerException;
 import java.util.Scanner;
 
 public class MagicBallApp {
@@ -15,7 +18,6 @@ public class MagicBallApp {
 		String yorn = sc.next();		
 		Magic8BallRemembers theBall = new Magic8BallRemembers();	
 		if (yorn.equals("Y")) {
-//			Magic8Ball theBall = new Magic8Ball();
 			do {
 				System.out.println("Ask any question you have in mind...");	
 				question = sc.next();
@@ -25,9 +27,29 @@ public class MagicBallApp {
 				System.out.println("Would you like to continue? (Y/N)");
 				continuePlay = sc.next();
 			}while (continuePlay.equals("Y"));
+			//Append history to the grandHistory file
+			theBall.setHistoryFileName("magicHistory");
+			try {
+				theBall.addGrandHistory(theBall.getHistory());
+			} catch (FileNotFoundException e) {
+				e.getMessage();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (NullPointerException e) {
+				e.getMessage();
+			}
 			System.out.println("Would you like to see QnA history? (Y/N)");
 			seeHistory = sc.next();
 			if (seeHistory.equals("Y")) theBall.displayHistory();
+			System.out.println("The grand total history: ");
+			try {
+				theBall.showGrandHistory();
+			} catch (FileNotFoundException e) {
+				System.out.println("Check if the grand history file exits.");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
 			System.out.println("Bye!");
 		}
 		sc.close();
