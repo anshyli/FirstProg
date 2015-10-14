@@ -17,18 +17,23 @@ public class MagicBallApp {
 		System.out.println("Welcome to play the Magic8Ball game. Are you ready? (Y/N)");			
 		String yorn = sc.next();		
 		Magic8BallRemembers theBall = new Magic8BallRemembers();	
+		theBall.setHistoryFileName("magicHistory");
 		if (yorn.equals("Y")) {
 			do {
 				System.out.println("Ask any question you have in mind...");	
 				question = sc.next();
-				response = theBall.shakeIt();
-				System.out.println( "MAGIC 8-BALL SAYS: " + response );
-				theBall.addHistoryEntry(question, response);
-				System.out.println("Would you like to continue? (Y/N)");
+				if (!theBall.checkQuestionExist(question)){
+					response = theBall.shakeIt();
+					System.out.println( "MAGIC 8-BALL SAYS: " + response );
+					theBall.addHistoryEntry(question, response);
+					System.out.println("Would you like to continue? (Y/N)");
+				}else {
+					System.out.println("Question already asked before. Ask another? (Y/N)");
+				}
+//				System.out.println("Would you like to continue? (Y/N)");
 				continuePlay = sc.next();
 			}while (continuePlay.equals("Y"));
 			//Append history to the grandHistory file
-			theBall.setHistoryFileName("magicHistory");
 			try {
 				theBall.addGrandHistory(theBall.getHistory());
 			} catch (FileNotFoundException e) {

@@ -55,15 +55,32 @@ public class Magic8BallRemembers extends Magic8Ball {
 		public void setHistoryFileName(String historyFileName) {
 			historyIO.setFileName(historyFileName);
 		}
+		public boolean checkQuestionExist(String question) {
+			boolean flag = true;
+			String answer = readGrandHistory().get(question);
+			if (answer == null) flag = false;
+			return flag;
+		}
+		private HashMap <String, String> readGrandHistory() {
+			historyIO.setRwFlag(historyRead);
+			try {
+				grandHistory = historyIO.readFile();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return grandHistory;
+		}
 		public void addGrandHistory(HashMap<String, String> grandHistory)
 						throws FileNotFoundException, IOException {
 			historyIO.setRwFlag(historyWrite);
 			historyIO.writeFile(grandHistory);
 		}
 		public void showGrandHistory() throws FileNotFoundException, IOException {
-			historyIO.setRwFlag(historyRead);
-			grandHistory = historyIO.readFile();
-			showMap(grandHistory);
+			showMap(readGrandHistory());
 		}
 		private void showMap(HashMap<String, String> aMap){
 			int i = 1;

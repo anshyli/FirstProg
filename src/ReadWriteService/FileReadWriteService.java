@@ -2,7 +2,7 @@ package ReadWriteService;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
+//import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -14,7 +14,7 @@ import java.util.Map.Entry;
 public class FileReadWriteService {
 	String fileName = "";
 	boolean rwFlag = true; // read = true; write = false
-	protected static String myDir = "C:\\MC\\iofiles";
+	protected static String myDir = "C:\\MC\\iofiles\\";
 
 	public FileReadWriteService() {
 	}
@@ -31,10 +31,10 @@ public class FileReadWriteService {
 		BufferedReader reader = new BufferedReader(new FileReader(this.getFileName()));
 		try {
 			while ((line = reader.readLine()) != null) {
-				System.out.println(line);
+//				System.out.println(line);
 				// parse the key and value out assume the delimiter is "|"
 				String[] tokens = line.split("\\|");
-				System.out.println(tokens[0] + "  " + tokens[1]);
+//				System.out.println(tokens[0] + "  " + tokens[1]);
 				
 				theMap.put(tokens[0], tokens[1]);
 			}
